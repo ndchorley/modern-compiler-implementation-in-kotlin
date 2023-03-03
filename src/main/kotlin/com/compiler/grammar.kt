@@ -16,7 +16,14 @@ data class OperatorExpression(val left: Expression, val operator: Operator, val 
 
 data class StatementThenExpression(val statement: Statement, val expression: Expression) : Expression()
 
-abstract class ExpressionList
-data class PairExpressionList(val head: Expression, val tail: ExpressionList): ExpressionList()
-data class LastExpressionList(val expression: Expression): ExpressionList()
+abstract class ExpressionList {
+    abstract fun size(): Int
+}
 
+data class PairExpressionList(val head: Expression, val tail: ExpressionList): ExpressionList() {
+    override fun size(): Int = 1 + tail.size()
+}
+
+data class LastExpressionList(val expression: Expression): ExpressionList() {
+    override fun size(): Int = 1
+}
