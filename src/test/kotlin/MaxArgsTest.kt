@@ -18,12 +18,14 @@ class MaxArgsTest {
             PrintStatement(
                 PairExpressionList(
                     Number(5),
-                    LastExpressionList(Number(6))
+                    PairExpressionList(
+                        Number(6),
+                        LastExpressionList(Number(3)))
                 )
             )
 
         val result = maxArgs(statement)
 
-        assertEquals(2, result)
+        assertEquals(3, result)
     }
 }
