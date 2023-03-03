@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.gradle.tasks.KotlinTest
-
 plugins {
     kotlin("jvm") version "1.8.10"
 }
