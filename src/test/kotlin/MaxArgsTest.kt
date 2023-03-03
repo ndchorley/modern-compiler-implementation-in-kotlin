@@ -1,6 +1,6 @@
 import com.compiler.*
 import com.compiler.Number
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class MaxArgsTest {
@@ -16,7 +16,14 @@ class MaxArgsTest {
 
         val result = maxArgs(statement)
 
-        Assertions.assertEquals(2, result)
+        assertEquals(2, result)
+    }
 
+    @Test
+    fun `it returns 0 for an assignment statement`() {
+        assertEquals(
+            0,
+            maxArgs(AssignmentStatement("a", Number(1)))
+        )
     }
 }
