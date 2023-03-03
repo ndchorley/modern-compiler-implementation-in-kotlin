@@ -24,8 +24,28 @@ class MaxArgsTest {
                 )
             )
 
-        val result = maxArgs(statement)
+        assertEquals(
+            3,
+            maxArgs(statement)
+        )
+    }
 
-        assertEquals(3, result)
+    @Test
+    fun `it returns the maximum number of arguments of two print statements`() {
+        val statement =
+            CompoundStatement(
+                PrintStatement(LastExpressionList(Number(1))),
+                PrintStatement(
+                    PairExpressionList(
+                        Number(2),
+                        LastExpressionList(Number(3))
+                    )
+                )
+            )
+
+        assertEquals(
+            2,
+            maxArgs(statement)
+        )
     }
 }
