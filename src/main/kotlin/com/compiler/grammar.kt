@@ -5,7 +5,7 @@ data class CompoundStatement(val statement1: Statement, val statement2: Statemen
 data class AssignmentStatement(val identifier: String, val expression: Expression): Statement()
 data class PrintStatement(val expressions: ExpressionList): Statement()
 
-abstract class Expression
+sealed class Expression
 data class Identifier(val name: String) : Expression()
 data class Number(val value: Int) : Expression()
 
@@ -16,7 +16,7 @@ data class OperatorExpression(val left: Expression, val operator: Operator, val 
 
 data class StatementThenExpression(val statement: Statement, val expression: Expression) : Expression()
 
-abstract class ExpressionList {
+sealed class ExpressionList {
     abstract fun size(): Int
 }
 
