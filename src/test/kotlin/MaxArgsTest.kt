@@ -73,4 +73,36 @@ class MaxArgsTest {
             maxArgs(statement)
         )
     }
+
+    @Test
+    fun `it returns the maximum number of arguments when a print statement contains several nested print statements`() {
+        val statement =
+            PrintStatement(
+                PairExpressionList(
+                    StatementThenExpression(
+                        PrintStatement(LastExpressionList(Number(1))),
+                        Number(2)
+                    ),
+                    LastExpressionList(
+                        StatementThenExpression(
+                            PrintStatement(
+                                PairExpressionList(
+                                    Number(4),
+                                    PairExpressionList(
+                                        Number(5),
+                                        LastExpressionList(Number(6))
+                                    )
+                                )
+                            ),
+                            Number(6)
+                        )
+                    )
+                )
+            )
+
+        assertEquals(
+            3,
+            maxArgs(statement)
+        )
+    }
 }
