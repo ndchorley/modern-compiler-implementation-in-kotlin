@@ -2,7 +2,7 @@ package com.compiler
 
 fun maxArgs(statement: Statement): Int =
     when (statement) {
-        is PrintStatement -> {
+        is PrintStatement ->
             when (val statementThenExpression = statement.expressions.statementThenExpressions().firstOrNull()) {
                 null -> statement.expressions.size()
                 else -> maxOf(
@@ -10,7 +10,6 @@ fun maxArgs(statement: Statement): Int =
                     maxArgs(statementThenExpression.statement)
                 )
             }
-        }
 
         is AssignmentStatement -> 0
         is CompoundStatement -> maxOf(maxArgs(statement.statement1), maxArgs(statement.statement2))
