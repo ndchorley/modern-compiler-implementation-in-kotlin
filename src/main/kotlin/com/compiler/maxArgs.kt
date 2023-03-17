@@ -9,9 +9,9 @@ fun maxArgs(statement: Statement): Int =
         is PrintStatement -> {
             val statementThenExpressions = statement.expressions.statementThenExpressions()
 
-            if (statementThenExpressions.isEmpty()) {
+            if (statementThenExpressions.isEmpty())
                 statement.expressions.size()
-            } else
+            else
                 maxOf(
                     statement.expressions.size(),
                     *statementThenExpressions.map { maxArgs(it.statement) }.toIntArray()
