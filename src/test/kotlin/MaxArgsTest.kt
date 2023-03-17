@@ -1,5 +1,6 @@
 import com.compiler.*
 import com.compiler.Number
+import com.compiler.Operator.PLUS
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -20,7 +21,8 @@ class MaxArgsTest {
                     Number(5),
                     PairExpressionList(
                         Number(6),
-                        LastExpressionList(Number(3)))
+                        LastExpressionList(Number(3))
+                    )
                 )
             )
 
@@ -39,6 +41,29 @@ class MaxArgsTest {
                     PairExpressionList(
                         Number(2),
                         LastExpressionList(Number(3))
+                    )
+                )
+            )
+
+        assertEquals(
+            2,
+            maxArgs(statement)
+        )
+    }
+
+    @Test
+    fun `it returns the maximum number of arguments of any nested print statement`() {
+        val statement =
+            PrintStatement(
+                LastExpressionList(
+                    StatementThenExpression(
+                        PrintStatement(
+                            PairExpressionList(
+                                Number(1),
+                                LastExpressionList(Number(2))
+                            )
+                        ),
+                        OperatorExpression(Number(4), PLUS, Number(10))
                     )
                 )
             )
