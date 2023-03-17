@@ -52,7 +52,7 @@ class MaxArgsTest {
     }
 
     @Test
-    fun `it returns the maximum number of arguments of any nested print statement`() {
+    fun `it returns the maximum number of arguments of a print statement nested inside another`() {
         val statement =
             PrintStatement(
                 LastExpressionList(
