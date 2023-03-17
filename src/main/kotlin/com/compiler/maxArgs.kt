@@ -20,9 +20,8 @@ fun maxArgs(statement: Statement): Int =
     }
 
 private fun ExpressionList.statementThenExpressions(): List<StatementThenExpression> {
-    fun loop(current: ExpressionList, resultSoFar: List<StatementThenExpression>): List<StatementThenExpression> {
-
-        return when (current) {
+    fun loop(current: ExpressionList, resultSoFar: List<StatementThenExpression>): List<StatementThenExpression> =
+        when (current) {
             is LastExpressionList ->
                 when (current.expression) {
                     is StatementThenExpression -> resultSoFar.plus(current.expression)
@@ -36,7 +35,6 @@ private fun ExpressionList.statementThenExpressions(): List<StatementThenExpress
                     else -> current.tail.statementThenExpressions()
                 }
         }
-    }
 
     return loop(this, listOf())
 }
