@@ -1,18 +1,26 @@
-import com.compiler.LastExpressionList
-import com.compiler.Number
-import com.compiler.PrintStatement
-import com.compiler.interpret
+import com.compiler.*
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments.*
+import org.junit.jupiter.params.provider.MethodSource
 
 class InterpretTest {
-    @Test
-    fun `it interprets a statement`() {
-        assertEquals(
-            """1
+    @ParameterizedTest
+    @MethodSource("examples")
+    fun `it interprets a statement`(statement: Statement, expectedResult: String) {
+        assertEquals(expectedResult, interpret(statement))
+    }
 
-            """.trimIndent(),
-            interpret(PrintStatement(LastExpressionList(Number(1))))
-        )
+    companion object {
+        @JvmStatic
+        private fun examples() =
+            listOf(
+                arguments(
+                    PrintStatement(LastExpressionList(Number(1))),
+                    """1
+
+                    """.trimIndent()
+                )
+            )
     }
 }
