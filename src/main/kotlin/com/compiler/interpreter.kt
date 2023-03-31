@@ -2,12 +2,11 @@ package com.compiler
 
 fun interpret(statement: Statement): String =
     when (statement) {
-        is PrintStatement -> {
+        is PrintStatement ->
             when (val expression = statement.expressions.first()) {
                 is Number -> "${expression.value}\n"
                 else -> TODO()
             }
-        }
 
         else -> TODO()
     }
