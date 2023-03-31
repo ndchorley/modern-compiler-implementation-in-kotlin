@@ -20,6 +20,21 @@ class InterpretTest {
                     """1
 
                     """.trimIndent()
+                ),
+
+                arguments(
+                    PrintStatement(
+                        PairExpressionList(
+                            Number(1),
+                            PairExpressionList(
+                                Number(2),
+                                LastExpressionList(Number(3))
+                            )
+                        )
+                    ),
+                    """1 2 3
+
+                    """.trimIndent()
                 )
             )
     }

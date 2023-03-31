@@ -9,7 +9,7 @@ fun interpret(statement: Statement): String =
 private fun ExpressionList.interpret(): String =
     when (this) {
         is LastExpressionList -> expression.interpret().plus("\n")
-        else -> TODO()
+        is PairExpressionList -> head.interpret().plus(" ").plus(tail.interpret())
     }
 
 private fun Expression.interpret(): String =
