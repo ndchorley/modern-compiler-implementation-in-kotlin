@@ -2,17 +2,18 @@ package com.compiler
 
 fun interpret(statement: Statement): String =
     when (statement) {
-        is PrintStatement ->
-            when (val expression = statement.expressions.first()) {
-                is Number -> "${expression.value}\n"
-                else -> TODO()
-            }
-
+        is PrintStatement -> statement.expressions.interpret()
         else -> TODO()
     }
 
-private fun ExpressionList.first(): Expression =
+private fun ExpressionList.interpret(): String =
     when (this) {
-        is LastExpressionList -> this.expression
-        is PairExpressionList -> TODO()
+        is LastExpressionList -> expression.interpret().plus("\n")
+        else -> TODO()
+    }
+
+private fun Expression.interpret(): String =
+    when (this) {
+        is Number -> this.value.toString()
+        else -> TODO()
     }
