@@ -6,7 +6,7 @@ fun interpret(statement: Statement): String =
         else -> TODO()
     }
 
-data class State(val output: String)
+private data class State(val output: String)
 
 private fun interpret(expressionList: ExpressionList): State =
     when (expressionList) {
