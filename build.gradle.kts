@@ -10,8 +10,10 @@ repositories {
 }
 
 dependencies {
+    runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.2")
+    testImplementation("com.natpryce:hamkrest:1.8.0.1")
 }
 
 kotlin {

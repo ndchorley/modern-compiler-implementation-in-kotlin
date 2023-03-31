@@ -1,5 +1,6 @@
 import com.compiler.*
-import org.junit.jupiter.api.Assertions.assertEquals
+import com.natpryce.hamkrest.assertion.assertThat
+import com.natpryce.hamkrest.equalTo
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments.*
 import org.junit.jupiter.params.provider.MethodSource
@@ -8,7 +9,7 @@ class InterpretTest {
     @ParameterizedTest
     @MethodSource("examples")
     fun `it interprets a statement`(statement: Statement, expectedResult: String) {
-        assertEquals(expectedResult, interpret(statement))
+        assertThat(interpret(statement), equalTo(expectedResult))
     }
 
     companion object {
