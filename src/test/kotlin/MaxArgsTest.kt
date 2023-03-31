@@ -1,9 +1,12 @@
 import com.compiler.*
+import com.compiler.Number
 import com.compiler.Operator.PLUS
+import com.compiler.Operator.TIMES
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.Arguments.arguments
 import org.junit.jupiter.params.provider.MethodSource
 
 class MaxArgsTest {
@@ -89,7 +92,7 @@ class MaxArgsTest {
         @JvmStatic
         fun severalNestedPrintStatementsExamples(): List<Arguments> =
             listOf(
-                Arguments.arguments(
+                arguments(
                     PrintStatement(
                         PairExpressionList(
                             StatementThenExpression(
@@ -109,6 +112,27 @@ class MaxArgsTest {
                                     ),
                                     Number(6)
                                 )
+                            )
+                        )
+                    ),
+                    3
+                ),
+
+                arguments(
+                    PrintStatement(
+                        PairExpressionList(
+                                StatementThenExpression(
+                                    PrintStatement(
+                                      PairExpressionList(
+                                          Number(2),
+                                          LastExpressionList(Number(3))
+                                      )
+                                    ),
+                                    Number(1)
+                                ),
+                                PairExpressionList(
+                                    Number(7),
+                                    LastExpressionList(Number(8))
                             )
                         )
                     ),
