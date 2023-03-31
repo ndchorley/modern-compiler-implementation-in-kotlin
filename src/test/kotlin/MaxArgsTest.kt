@@ -1,8 +1,7 @@
 import com.compiler.*
-import com.compiler.Number
 import com.compiler.Operator.PLUS
-import com.compiler.Operator.TIMES
-import org.junit.jupiter.api.Assertions.assertEquals
+import com.natpryce.hamkrest.assertion.assertThat
+import com.natpryce.hamkrest.equalTo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -12,9 +11,9 @@ import org.junit.jupiter.params.provider.MethodSource
 class MaxArgsTest {
     @Test
     fun `it returns 0 for an assignment statement`() {
-        assertEquals(
-            0,
-            maxArgs(AssignmentStatement("a", Number(1)))
+        assertThat(
+            maxArgs(AssignmentStatement("a", Number(1))),
+            equalTo(0)
         )
     }
 
@@ -31,9 +30,9 @@ class MaxArgsTest {
                 )
             )
 
-        assertEquals(
-            3,
-            maxArgs(statement)
+        assertThat(
+            maxArgs(statement),
+            equalTo(3),
         )
     }
 
@@ -50,9 +49,9 @@ class MaxArgsTest {
                 )
             )
 
-        assertEquals(
-            2,
-            maxArgs(statement)
+        assertThat(
+            maxArgs(statement),
+            equalTo(2),
         )
     }
 
@@ -73,9 +72,9 @@ class MaxArgsTest {
                 )
             )
 
-        assertEquals(
-            2,
-            maxArgs(statement)
+        assertThat(
+            maxArgs(statement),
+            equalTo(2),
         )
     }
 
@@ -85,7 +84,7 @@ class MaxArgsTest {
         statement: Statement,
         expectedNumber: Int
     ) {
-        assertEquals(expectedNumber, maxArgs(statement))
+        assertThat(maxArgs(statement), equalTo(expectedNumber))
     }
 
     companion object {
